@@ -1,11 +1,16 @@
 import React from "react";
 import Label from "../Label/Label";
+import DatePicker from "react-multi-date-picker";
 
 const FormField = props => {
-	const { formField, currentState, onChange } = props;
+	const { formField, currentState, onChange, maxDate } = props;
 
 	const handleChange = e => {
 		const { name, value } = e.target;
+		onChange(name, value);
+	};
+
+	const handleDateChange = (name, value) => {
 		onChange(name, value);
 	};
 
@@ -24,6 +29,12 @@ const FormField = props => {
 						</option>
 					))}
 				</select>
+			) : formField.type === "date" ? (
+				<DatePicker
+					maxDate={maxDate}
+					value={currentState[formField.name]}
+					onChange={date => handleDateChange(formField.name, date)}
+				/>
 			) : (
 				<input
 					name={formField.name}
@@ -37,3 +48,4 @@ const FormField = props => {
 };
 
 export default FormField;
+

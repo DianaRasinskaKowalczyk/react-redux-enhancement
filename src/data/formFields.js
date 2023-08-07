@@ -2,6 +2,8 @@ import currencies from "./currencies";
 
 const currencyOptionsArray = Object.keys(currencies);
 
+
+
 export const formFields = [
 	{
 		name: "currency",
@@ -25,8 +27,8 @@ export const formFields = [
 		name: "purchaseDate",
 		label: "Enter purchase date",
 		required: true,
-		type: "text",
-		pattern: /[0-9]{4}-[0-9]{2}-[0-9]{2}/,
+		type: "date",
+		// pattern: /[0-9]{2}.[0-9]{2}.[0-9]{4}/,
 		errMessage: "Enter date of purchase",
 		placeholder: "YYYY-MM-DD",
 	},
