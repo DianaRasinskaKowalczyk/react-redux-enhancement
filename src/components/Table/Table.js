@@ -1,5 +1,4 @@
 import React from "react";
-import TableCell from "../TableCell/TableCell";
 import TableHeaderCell from "../TableHeaderCell/TableHeaderCell";
 import TableRow from "../TableRow/TableRow";
 

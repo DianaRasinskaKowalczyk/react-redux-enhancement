@@ -4,7 +4,7 @@ import { formFields } from "../../data/formFields";
 import Button from "../Button/Button";
 import { validateForm } from "../../helpers/formValidation";
 import Error from "../Error/Error";
-import { sendDataToLS } from "../../modules/localstorage/localstorage.actions";
+import LocalStorageApi from "../../modules/localstorage/localstorage.api";
 
 const Form = () => {
 	const initialFormState = {
@@ -14,6 +14,8 @@ const Form = () => {
 		price: "",
 		errors: [],
 	};
+
+	const lsApi = new LocalStorageApi();
 
 	const [formState, setFormState] = useState(initialFormState);
 
@@ -29,7 +31,7 @@ const Form = () => {
 		const errors = validateForm(formState, formFields);
 
 		if (errors.length === 0) {
-			sendDataToLS("lsData", formState);
+			lsApi.saveToLocalStorage("lsData", formState);
 			setFormState(initialFormState);
 		} else {
 			const errorMessage = "Please check the form. All fields must be filled";

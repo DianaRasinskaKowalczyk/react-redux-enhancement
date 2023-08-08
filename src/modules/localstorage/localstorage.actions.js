@@ -10,10 +10,6 @@ export const loadDataFromLSAction = data => {
 	};
 };
 
-export const sendDataToLS = (name, data) => {
-	lsAPI.saveToLocalStorage(name, data);
-};
-
 export const loadDataFromLS = name => dispatch => {
 	const dataFromLS = lsAPI.loadFromLocalStorage(name);
 
