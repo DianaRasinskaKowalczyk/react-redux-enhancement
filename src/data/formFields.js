@@ -19,6 +19,7 @@ export const formFields = [
 		type: "number",
 		errMessage: "Enter amount of currency",
 		placeholder: "currency amount",
+		minValue: "0",
 	},
 	{
 		name: "purchaseDate",
@@ -36,5 +37,6 @@ export const formFields = [
 		type: "number",
 		errMessage: "Enter price of purchase",
 		placeholder: "purchase price",
+		minValue: "0",
 	},
 ];

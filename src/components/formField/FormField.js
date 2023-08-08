@@ -9,6 +9,8 @@ const FormField = props => {
 		onChange(name, value);
 	};
 
+
+
 	return (
 		<React.Fragment key={formField.name}>
 			<Label name={formField.name} label={formField.label} /> {""}
@@ -32,7 +34,8 @@ const FormField = props => {
 					value={currentState[formField.name]}
 					placeholder={formField.placeholder}
 					onChange={e => handleChange(e)}
-					max={formField.maxDate}></input>
+					max={formField.maxDate}
+					min={formField.minValue}></input>
 			)}
 		</React.Fragment>
 	);
