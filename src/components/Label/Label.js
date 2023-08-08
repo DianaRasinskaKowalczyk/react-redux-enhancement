@@ -1,7 +1,7 @@
 import React from "react";
 
 const Label = props => {
-	const { name, label } = props;
+	const { label, name } = props;
 
 	return <label htmlFor={name}>{label}</label>;
 };

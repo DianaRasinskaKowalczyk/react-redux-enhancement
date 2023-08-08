@@ -4,7 +4,7 @@ import { formFields } from "../../data/formFields";
 import Button from "../Button/Button";
 import { validateForm } from "../../helpers/formValidation";
 import Error from "../Error/Error";
-import DatePicker from "react-multi-date-picker";
+import { sendDataToLS } from "../../modules/localstorage/localstorage.actions";
 
 const Form = () => {
 	const initialFormState = {
@@ -12,7 +12,7 @@ const Form = () => {
 		amount: "",
 		purchaseDate: "",
 		price: "",
-		errors: "",
+		errors: [],
 	};
 
 	const [formState, setFormState] = useState(initialFormState);
@@ -27,10 +27,9 @@ const Form = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		const errors = validateForm(formState, formFields);
-		console.log(errors);
 
 		if (errors.length === 0) {
-			console.log(formState);
+			sendDataToLS("lsData", formState);
 			setFormState(initialFormState);
 		} else {
 			const errorMessage = "Please check the form. All fields must be filled";
@@ -48,7 +47,6 @@ const Form = () => {
 				formField={field}
 				currentState={formState}
 				onChange={handleFormField}
-				maxDate={new Date()}
 			/>
 		);
 	});

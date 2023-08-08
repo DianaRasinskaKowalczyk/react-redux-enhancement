@@ -1,8 +1,7 @@
 import currencies from "./currencies";
 
 const currencyOptionsArray = Object.keys(currencies);
-
-
+const today = new Date().toISOString().split("T")[0];
 
 export const formFields = [
 	{
@@ -10,7 +9,6 @@ export const formFields = [
 		label: "Select currency",
 		required: true,
 		type: "select",
-		pattern: null,
 		errMessage: "Select a currency",
 		options: currencyOptionsArray,
 	},
@@ -19,7 +17,6 @@ export const formFields = [
 		label: "Enter currency amount",
 		required: true,
 		type: "number",
-		pattern: null,
 		errMessage: "Enter amount of currency",
 		placeholder: "currency amount",
 	},
@@ -28,16 +25,15 @@ export const formFields = [
 		label: "Enter purchase date",
 		required: true,
 		type: "date",
-		// pattern: /[0-9]{2}.[0-9]{2}.[0-9]{4}/,
 		errMessage: "Enter date of purchase",
 		placeholder: "YYYY-MM-DD",
+		maxDate: today,
 	},
 	{
 		name: "price",
-		label: "Enter price of purchase",
+		label: "Enter purchase price",
 		required: true,
 		type: "number",
-		pattern: null,
 		errMessage: "Enter price of purchase",
 		placeholder: "purchase price",
 	},
