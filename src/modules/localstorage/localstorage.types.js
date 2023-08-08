@@ -1,5 +1,5 @@
-const LOAD_FROM_LS = "loadDataFromLS";
+const SAVE_FROM_LS = "saveDataFromLS";
 
 export default {
-	LOAD_FROM_LS,
+	SAVE_FROM_LS,
 };

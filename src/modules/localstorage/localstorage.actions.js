@@ -5,7 +5,7 @@ const lsAPI = new LocalStorageApi();
 
 export const saveDataFromLSAction = data => {
 	return {
-		type: types.LOAD_FROM_LS,
+		type: types.SAVE_FROM_LS,
 		payload: data,
 	};
 };
