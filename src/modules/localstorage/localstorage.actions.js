@@ -1,21 +1,19 @@
 import types from "./localstorage.types";
-import LocalStorageApi from "./localstorage.api";
+import LocalStorage from "./localstorage.api";
 
-const lsAPI = new LocalStorageApi();
+const apiLS = new LocalStorage();
 
-export const saveDataFromLSAction = data => {
+export const saveDataAction = data => {
 	return {
-		type: types.SAVE_FROM_LS,
+		type: types.SAVE_DATA,
 		payload: data,
 	};
 };
 
 export const loadDataFromLS =
-	(name = "lsData") =>
+	(name = "localStorageData") =>
 	dispatch => {
-		const dataFromLS = lsAPI.loadFromLocalStorage(name);
-
-		if (dataFromLS) {
-			dispatch(saveDataFromLS(dataFromLS));
-		}
+		apiLS
+			.loadFromLocalStorage(name)
+			.then(resp => dispatch(saveDataAction(resp)));
 	};

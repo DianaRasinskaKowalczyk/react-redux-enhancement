@@ -1,32 +1,33 @@
-class LocalStorageApi {
-	saveToLocalStorage(name, data) {
+class LocalStorage {
+	saveToLocalStorage = (name, data) => {
 		try {
 			const existingData = localStorage.getItem(name);
 
-			let lsDataArray = [];
+			let dataArray = [];
 
 			if (existingData) {
-				lsDataArray = JSON.parse(existingData);
+				dataArray = JSON.parse(existingData);
 			}
 
-			lsDataArray.push(data);
-			const newData = JSON.stringify(lsDataArray);
-			localStorage.setItem(name, newData);
+			dataArray.push(data);
+
+			localStorage.setItem(name, JSON.stringify(dataArray));
 		} catch (e) {
 			console.warn(e);
 		}
-	}
+	};
 
-	loadFromLocalStorage(name) {
+	loadFromLocalStorage = name => {
 		try {
 			const dataFromLS = localStorage.getItem(name);
-			if (data === null) return undefined;
+
+			if (dataFromLS === null) return undefined;
 			return JSON.parse(dataFromLS);
 		} catch (e) {
 			console.warn(e);
 			return undefined;
 		}
-	}
+	};
 }
 
-export default LocalStorageApi;
+export default LocalStorage;

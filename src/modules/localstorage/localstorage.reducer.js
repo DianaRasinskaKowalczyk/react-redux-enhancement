@@ -1,19 +1,19 @@
 import types from "./localstorage.types";
 
 const initialState = {
-	lsData: [],
+	entries: [],
 };
 
-const reducerLS = (state = initialState, action) => {
+const reducerForm = (state = initialState, action) => {
 	switch (action.type) {
-		case types.LOAD_FROM_LS:
+		case types.SAVE_DATA:
 			return {
 				...state,
-				lsData: action.payload,
+				entries: [...state.entries, action.payload],
 			};
 		default:
 			return state;
 	}
 };
 
-export default reducerLS;
+export default reducerForm;

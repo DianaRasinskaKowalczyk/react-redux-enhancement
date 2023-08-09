@@ -1,9 +1,9 @@
 import React from "react";
 
 const TableHeaderCell = props => {
-	const { tableField } = props;
+	const { columnField } = props;
 
-	return <th>{tableField.label}</th>;
+	return <th>{columnField.label}</th>;
 };
 
 export default TableHeaderCell;

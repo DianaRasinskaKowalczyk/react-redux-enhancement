@@ -3,7 +3,7 @@ import TableHeaderCell from "../TableHeaderCell/TableHeaderCell";
 import TableRow from "../TableRow/TableRow";
 
 const Table = props => {
-	const { tableHeaderCells } = props;
+	const { tableHeaderCells, children } = props;
 
 	const headerCells = tableHeaderCells.map(cell => {
 		return <TableHeaderCell key={cell.label}>{cell.label}</TableHeaderCell>;
@@ -12,9 +12,7 @@ const Table = props => {
 	return (
 		<thead>
 			<TableRow>{headerCells}</TableRow>
-			<tbody>
-				<TableRow>{cells}</TableRow>
-			</tbody>
+			<tbody>{children}</tbody>
 		</thead>
 	);
 };

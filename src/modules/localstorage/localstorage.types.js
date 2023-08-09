@@ -1,5 +1,3 @@
-const SAVE_FROM_LS = "saveDataFromLS";
+const SAVE_DATA = "saveData";
 
-export default {
-	SAVE_FROM_LS,
-};
+export default { SAVE_DATA };

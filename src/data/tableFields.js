@@ -1,4 +1,4 @@
-export const tableFields = [
+export const columns = [
 	{ name: "currency", label: "Currency" },
 	{ name: "amount", label: "Amount" },
 	{ name: "purchaseDate", label: "Date of purchase" },
