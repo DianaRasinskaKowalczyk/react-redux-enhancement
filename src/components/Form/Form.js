@@ -22,27 +22,26 @@ const Form = () => {
 	const exchangeApi = new ExchangeApi();
 
 	const dispatch = useDispatch();
-	const entries = useSelector(state => state.entries);
+	const entries = useSelector(state => state.form.entries);
 
 	const [formState, setFormState] = useState(initialFormState);
 
-	// useEffect(() => {
-	// 	getPastRateByDate();
-	// }, [formState.currency, formState.purchaseDate]);
+	useEffect(() => {
+		getPastRateByDate();
+	}, [formState.currency, formState.purchaseDate]);
 
-	// const getPastRateByDate = () => {
-	// 	const { currency, purchaseDate, price } = formState;
+	const getPastRateByDate = () => {
+		const { currency, purchaseDate } = formState;
 
-	// 	if (currency && purchaseDate) {
-	// 		const rateFromApi = exchangeApi.getPastRate(purchaseDate, currency);
-	// 		setFormState({
-	// 			...formState,
-	// 			[price]: rateFromApi,
-	// 		});
-	// 	}
-	// };
-
-	exchangeApi.getCurrentRate();
+		if (currency && purchaseDate) {
+			exchangeApi.getPastRate().then(resp =>
+				setFormState({
+					...formState,
+					price: resp.toFixed(2),
+				})
+			);
+		}
+	};
 
 	const handleFormField = (name, value) => {
 		setFormState({

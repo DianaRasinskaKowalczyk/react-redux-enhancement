@@ -13,7 +13,6 @@ export const saveDataAction = data => {
 export const loadDataFromLS =
 	(name = "localStorageData") =>
 	dispatch => {
-		apiLS
-			.loadFromLocalStorage(name)
-			.then(resp => dispatch(saveDataAction(resp)));
+		const dataFromLS = apiLS.loadFromLocalStorage(name);
+		dispatch(saveDataAction(dataFromLS));
 	};

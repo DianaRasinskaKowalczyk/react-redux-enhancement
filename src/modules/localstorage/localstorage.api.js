@@ -18,15 +18,15 @@ class LocalStorage {
 	};
 
 	loadFromLocalStorage = name => {
-		try {
+		
 			const dataFromLS = localStorage.getItem(name);
 
-			if (dataFromLS === null) return undefined;
-			return JSON.parse(dataFromLS);
-		} catch (e) {
-			console.warn(e);
-			return undefined;
-		}
+			if (dataFromLS) {
+				return JSON.parse(dataFromLS);
+			}
+
+			return [];
+	
 	};
 }
 
