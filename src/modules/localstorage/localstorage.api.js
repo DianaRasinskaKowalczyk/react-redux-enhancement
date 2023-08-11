@@ -12,6 +12,8 @@ class LocalStorage {
 			dataArray.push(data);
 
 			localStorage.setItem(name, JSON.stringify(dataArray));
+			return dataArray;
+			
 		} catch (e) {
 			console.warn(e);
 		}

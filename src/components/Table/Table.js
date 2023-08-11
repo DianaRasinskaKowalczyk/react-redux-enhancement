@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import TableHeaderCell from "../TableHeaderCell/TableHeaderCell";
 import TableRow from "../TableRow/TableRow";
 import { columns } from "../../data/tableFields";
-import { loadDataFromLS } from "../../modules/localstorage/localstorage.actions";
+import { loadInitialDataFromLS } from "../../modules/localstorage/localstorage.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCurrentRateFromApi } from "../../modules/exchangeApi/exchangeApi.actions";
 import TableCell from "../TableCell/TableCell";
@@ -17,7 +17,7 @@ const Table = () => {
 	});
 
 	useEffect(() => {
-		dispatch(loadDataFromLS("localStorageData"));
+		dispatch(loadInitialDataFromLS("localStorageData"));
 	}, []);
 
 	useEffect(() => {
@@ -26,21 +26,17 @@ const Table = () => {
 		}
 	}, [formData]);
 
-	console.log(Array.isArray(formData));
-	console.log(tableData);
-
 	const renderRows = () => {
 		const rows = formData.map(item => {
 			const { currency, amount, purchaseDate, price } = item;
 
-			console.log(item);
-
 			const currentRate = Number(tableData[0]).toFixed(2);
-			console.log(currentRate);
 			const currentValue = (Number(amount) * currentRate).toFixed(2);
 			const difference = currentValue - Number(price) * Number(amount);
 			const percentage = (currentValue * 100) / (price * amount) - 100;
-			const profitOrLoss = `${difference} (${percentage.toFixed(2)} %)`;
+			const profitOrLoss = `${difference.toFixed(2)} (${percentage.toFixed(
+				2
+			)} %)`;
 
 			return (
 				<tr>

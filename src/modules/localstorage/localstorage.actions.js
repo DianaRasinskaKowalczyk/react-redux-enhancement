@@ -10,7 +10,14 @@ export const saveDataAction = data => {
 	};
 };
 
-export const loadDataFromLS =
+export const insertDataAction =
+	(name = "localStorageData", data) =>
+	dispatch => {
+		const dataFromLS = apiLS.saveToLocalStorage(name, data);
+		dispatch(saveDataAction(dataFromLS));
+	};
+
+export const loadInitialDataFromLS =
 	(name = "localStorageData") =>
 	dispatch => {
 		const dataFromLS = apiLS.loadFromLocalStorage(name);

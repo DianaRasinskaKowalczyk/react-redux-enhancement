@@ -6,7 +6,7 @@ import { validateForm } from "../../helpers/formValidation";
 import Error from "../Error/Error";
 import LocalStorage from "../../modules/localstorage/localstorage.api";
 import { useDispatch, useSelector } from "react-redux";
-import { saveDataAction } from "../../modules/localstorage/localstorage.actions";
+import { insertDataAction } from "../../modules/localstorage/localstorage.actions";
 import ExchangeApi from "../../modules/exchangeApi/exchangeApi.api";
 
 const Form = () => {
@@ -18,7 +18,6 @@ const Form = () => {
 		errors: [],
 	};
 
-	const localStorage = new LocalStorage();
 	const exchangeApi = new ExchangeApi();
 
 	const dispatch = useDispatch();
@@ -55,9 +54,7 @@ const Form = () => {
 		const errors = validateForm(formState, formFields);
 
 		if (errors.length === 0) {
-			localStorage.saveToLocalStorage("localStorageData", formState);
-			dispatch(saveDataAction(formState));
-			console.log(entries);
+			dispatch(insertDataAction("localStorageData", formState));
 			setFormState(initialFormState);
 		} else {
 			const errorMessage = "Please check the form. All fields must be filled";

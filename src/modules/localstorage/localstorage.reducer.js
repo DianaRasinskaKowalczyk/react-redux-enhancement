@@ -9,7 +9,7 @@ const reducerForm = (state = initialState, action) => {
 		case types.SAVE_DATA:
 			return {
 				...state,
-				entries: [...state.entries, action.payload],
+				entries: action.payload,
 			};
 		default:
 			return state;
