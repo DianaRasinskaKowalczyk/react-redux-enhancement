@@ -4,7 +4,6 @@ import { formFields } from "../../data/formFields";
 import Button from "../Button/Button";
 import { validateForm } from "../../helpers/formValidation";
 import Error from "../Error/Error";
-import LocalStorage from "../../modules/localstorage/localstorage.api";
 import { useDispatch, useSelector } from "react-redux";
 import { insertDataAction } from "../../modules/localstorage/localstorage.actions";
 import ExchangeApi from "../../modules/exchangeApi/exchangeApi.api";
@@ -43,6 +42,10 @@ const Form = () => {
 	};
 
 	const handleFormField = (name, value) => {
+		if (value.includes(",")) {
+			value = value.replace(/,/g, ".");
+		}
+
 		setFormState({
 			...formState,
 			[name]: value,
